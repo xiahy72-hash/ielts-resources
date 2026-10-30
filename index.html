@@ -1,0 +1,400 @@
+&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-CN"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;meta name="theme-color" content="#f5f9ff"&gt;
+  &lt;title&gt;雅思资料大全&lt;/title&gt;
+  &lt;style&gt;
+    :root {
+      color-scheme: light;
+      --blue: #2878e5;
+      --blue-dark: #175bbd;
+      --ink: #183153;
+      --muted: #71829b;
+      --line: #e7eef7;
+      --surface: #ffffff;
+      --background: #f5f9ff;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 86px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+        "Microsoft YaHei", sans-serif;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgb(255 255 255 / 94%);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--ink);
+      font-size: 17px;
+      font-weight: 750;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 11px;
+      background: var(--blue);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .nav-links a {
+      display: block;
+      padding: 9px 13px;
+      border-radius: 9px;
+      color: #50647f;
+      font-size: 14px;
+      transition: background-color 160ms ease, color 160ms ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      background: #edf5ff;
+      color: var(--blue-dark);
+      outline: none;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      margin-top: 34px;
+      padding: 70px 32px;
+      border: 1px solid #dfebfa;
+      border-radius: 24px;
+      background:
+        radial-gradient(ellipse at 86% 18%, rgb(92 161 255 / 17%), transparent 34%),
+        linear-gradient(120deg, #fff 8%, #eef6ff 100%);
+      text-align: center;
+    }
+
+    .hero::before,
+    .hero::after {
+      position: absolute;
+      width: 170px;
+      height: 170px;
+      border: 1px solid rgb(40 120 229 / 10%);
+      border-radius: 50%;
+      content: "";
+      pointer-events: none;
+    }
+
+    .hero::before { top: -100px; left: 8%; }
+
+    .hero::after {
+      right: 7%;
+      bottom: -120px;
+      width: 220px;
+      height: 220px;
+    }
+
+    .hero-content { position: relative; z-index: 1; }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 5px 12px;
+      border: 1px solid #d8e9ff;
+      border-radius: 999px;
+      background: #f5faff;
+      color: var(--blue-dark);
+      font-size: 13px;
+      font-weight: 650;
+      letter-spacing: 0.04em;
+    }
+
+    h1 {
+      margin: 0;
+      color: #16365f;
+      font-size: clamp(32px, 5vw, 48px);
+      line-height: 1.2;
+      letter-spacing: -0.04em;
+    }
+
+    .hero p {
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 48px 0 20px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      color: #203c61;
+      font-size: 23px;
+      letter-spacing: -0.02em;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      padding-bottom: 58px;
+    }
+
+    .card {
+      min-height: 178px;
+      padding: 23px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--surface);
+      box-shadow: 0 5px 20px rgb(40 77 122 / 4%);
+      transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: #cfe2fb;
+      box-shadow: 0 12px 28px rgb(40 77 122 / 9%);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      margin-bottom: 17px;
+    }
+
+    .card-icon {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      flex: 0 0 auto;
+      place-items: center;
+      border-radius: 12px;
+      background: #edf5ff;
+      color: var(--blue);
+      font-size: 16px;
+      font-weight: 750;
+    }
+
+    .card h3 {
+      margin: 0;
+      color: #203c61;
+      font-size: 17px;
+    }
+
+    .card p {
+      margin: 0;
+      padding-top: 13px;
+      border-top: 1px solid #eff3f8;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .site-footer {
+      border-top: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .footer-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      color: #8190a5;
+      font-size: 13px;
+    }
+
+    @media (max-width: 760px) {
+      .container { width: min(100% - 32px, 560px); }
+      html { scroll-padding-top: 110px; }
+
+      .nav {
+        min-height: auto;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+        padding-top: 13px;
+      }
+
+      .nav-links {
+        width: 100%;
+        gap: 2px;
+        overflow-x: auto;
+        padding-bottom: 10px;
+        scrollbar-width: none;
+      }
+
+      .nav-links::-webkit-scrollbar { display: none; }
+      .nav-links a { padding: 7px 11px; white-space: nowrap; }
+
+      .hero {
+        margin-top: 22px;
+        padding: 55px 20px;
+        border-radius: 19px;
+      }
+
+      .hero p { font-size: 14px; }
+
+      .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 4px;
+        margin-top: 38px;
+      }
+
+      .card-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 13px;
+        padding-bottom: 42px;
+      }
+
+      .card { min-height: 165px; padding: 18px; }
+    }
+
+    @media (max-width: 460px) {
+      .card-grid { grid-template-columns: 1fr; }
+      .card { min-height: 145px; }
+      .nav-links a { padding-right: 8px; padding-left: 8px; }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        padding: 16px 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header class="site-header"&gt;
+    &lt;nav class="nav container" aria-label="主导航"&gt;
+      &lt;a class="brand" href="#top"&gt;
+        &lt;span class="brand-mark" aria-hidden="true"&gt;雅&lt;/span&gt;
+        &lt;span&gt;雅思资料大全&lt;/span&gt;
+      &lt;/a&gt;
+      &lt;ul class="nav-links"&gt;
+        &lt;li&gt;&lt;a href="#listening"&gt;听力&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#reading"&gt;阅读&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#writing"&gt;写作&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#speaking"&gt;口语&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#tests"&gt;真题&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#vocabulary"&gt;词汇&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+
+  &lt;main class="container" id="top"&gt;
+    &lt;section class="hero" aria-labelledby="page-title"&gt;
+      &lt;div class="hero-content"&gt;
+        &lt;span class="eyebrow"&gt;内容待补充&lt;/span&gt;
+        &lt;h1 id="page-title"&gt;雅思资料大全&lt;/h1&gt;
+        &lt;p&gt;内容待补充&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;section aria-labelledby="resources-title"&gt;
+      &lt;div class="section-heading"&gt;
+        &lt;h2 id="resources-title"&gt;学习资料&lt;/h2&gt;
+        &lt;p&gt;内容待补充&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class="card-grid"&gt;
+        &lt;article class="card" id="listening"&gt;
+          &lt;div class="card-top"&gt;&lt;span class="card-icon" aria-hidden="true"&gt;听&lt;/span&gt;&lt;h3&gt;听力&lt;/h3&gt;&lt;/div&gt;
+          &lt;p&gt;内容待补充&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article class="card" id="reading"&gt;
+          &lt;div class="card-top"&gt;&lt;span class="card-icon" aria-hidden="true"&gt;读&lt;/span&gt;&lt;h3&gt;阅读&lt;/h3&gt;&lt;/div&gt;
+          &lt;p&gt;内容待补充&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article class="card" id="writing"&gt;
+          &lt;div class="card-top"&gt;&lt;span class="card-icon" aria-hidden="true"&gt;写&lt;/span&gt;&lt;h3&gt;写作&lt;/h3&gt;&lt;/div&gt;
+          &lt;p&gt;内容待补充&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article class="card" id="speaking"&gt;
+          &lt;div class="card-top"&gt;&lt;span class="card-icon" aria-hidden="true"&gt;说&lt;/span&gt;&lt;h3&gt;口语&lt;/h3&gt;&lt;/div&gt;
+          &lt;p&gt;内容待补充&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article class="card" id="tests"&gt;
+          &lt;div class="card-top"&gt;&lt;span class="card-icon" aria-hidden="true"&gt;题&lt;/span&gt;&lt;h3&gt;真题&lt;/h3&gt;&lt;/div&gt;
+          &lt;p&gt;内容待补充&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article class="card" id="vocabulary"&gt;
+          &lt;div class="card-top"&gt;&lt;span class="card-icon" aria-hidden="true"&gt;词&lt;/span&gt;&lt;h3&gt;词汇&lt;/h3&gt;&lt;/div&gt;
+          &lt;p&gt;内容待补充&lt;/p&gt;
+        &lt;/article&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;
+
+  &lt;footer class="site-footer"&gt;
+    &lt;div class="footer-inner container"&gt;
+      &lt;span&gt;雅思资料大全&lt;/span&gt;
+      &lt;span&gt;内容待补充&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;
